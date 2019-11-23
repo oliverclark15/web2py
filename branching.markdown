@@ -22,8 +22,8 @@ The branching conventions used in this project are based on Vincent Driessen's  
 |    Master   |           `master`          |        -       |           -          |
 | Development |            `dev`           |        -       |           -          |
 |   Release   |          `R-x.x.x`          |   Development  | Development,  Master |
-|   Feature   |    `Feature/feature-name`   |   Development  |      Development     |
-|    Hotfix   |     `Hotfix/hotfix-name`    |     Master     |  Development, Master |
+|   Feature   |    `feature/feature-name`   |   Development  |      Development     |
+|    Hotfix   |     `hotfix/hotfix-name`    |     Master     |  Development, Master |
 
 ## Primary Branches
 This branching model uses two primary branches; `master` and `dev` who exist throughout the projects lifespan.
