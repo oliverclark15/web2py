@@ -25,6 +25,8 @@ The branching conventions used in this project are based on Vincent Driessen's  
 |   Feature   |    `feature/feature-name`   |   Development  |      Development     |
 |    Hotfix   |     `hotfix/hotfix-name`    |     Master     |  Development, Master |
 
+A Precommit hook is provided located currently as [pre-commit](https://github.com/oliverclark15/web2py/blob/master/pre-commit) that enforces branch names according to the regex expression : `"^master$|^dev$|^feature\/.*$|^hotfix\/.*$|^R-\d\.\d\.\d$"`
+
 ## Primary Branches
 This branching model uses two primary branches; `master` and `dev` who exist throughout the projects lifespan.
 ### Master
