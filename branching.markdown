@@ -100,9 +100,6 @@ Deleted branch R-2.1.3 (was fd452aa).
 #### Branch Finalization
 
 ### Workflow Diagram
-
-https://github.com/oliverclark15/web2py/blob/master/Git-branching-model.pdf
-![Bilby Stampede](https://nvie.com/files/Git-branching-model.pdf)
-![Bilby Stampede](https://github.com/oliverclark15/web2py/blob/master/Git-branching-model.png)
+![Branch Model](https://github.com/oliverclark15/web2py/blob/master/Git-branching-model.png)
 
 
