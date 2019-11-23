@@ -58,6 +58,7 @@ $ git push origin dev
 ```
 
 ### Releases
+Release branches allow preparation of the latest production release. When features are ready (in `dev`) and the team is ready for a release the following procedure is followed.
 #### Branch Creation
 A new release branch is based from the `dev` branch. If we are ready for the next release 
 (say 2.1.3).
@@ -65,7 +66,7 @@ A new release branch is based from the `dev` branch. If we are ready for the nex
 $ git checkout -b R-2.1.3 dev
 switched to a new branch "R-2.1.3"
 ...
-... make necessary changes (version metadata, build info, etc)
+... make necessary admin changes (version metadata, build info, etc)
 ...
 $ git commit -a -m "Bumped version number to 2.1.3"
 [R-2.1.3 38d1238] Bumped version number to 2.1.3
@@ -96,9 +97,50 @@ Deleted branch R-2.1.3 (was fd452aa).
 ```
 
 ### Hotfixes
-#### Branch Creation
-#### Branch Finalization
 
+Hotfix branches are similar to release branches. However, they come when the team needs to act quickly upon a bug/issue in production release. Hotfix branches are based on `master` branch while feature branches are based on `dev` branch When a release has an issue, a hotfix branch is made from the corresponding tag on master branch (represents production release). The following procedure is followed to make a live hotfix.
+#### Branch Creation
+Consider the case when release 2.1.3 (R-2.1.3) is found to be buggy and a hotfix is required.
+``` console
+$ git checkout -b hotfix/2.1.4 master
+Switched to a new branch "hotfix/2.1.4"
+...
+... make necessary admin changes (version metadata, build info, etc)
+...
+$ git commit -a -m "Bumped version number to 2.1.4"
+[hotfix/2.1.4 32f51ac] Bumped version number to 2.1.4
+```
+Next, depending on issues with release, fix those issues and commit
+
+``` console
+$ git commit -m "Fixed severe production problem"
+[hotfix/2.1.4 acdf3a6] Fixed severe production problem
+5 files changed, 22 insertions(+), 11 deletions(-)
+````
+
+#### Branch Finalization
+To finish our hotfix, we need to incorporate our changes into `master` and `dev`.
+This is done by first updating `master` and tagging the new release.
+``` console
+$ git checkout master
+Switched to branch 'master'
+$ git merge --no-ff hotfix/2.1.4
+Merge made by recursive.
+$ git tag -a 2.1.4
+```
+Before incorporating the changes to `dev`
+
+``` console
+$ git checkout dev
+Switched to branch 'dev'
+$ git merge --no-ff hotfix/2.1.4
+Merge made by recursive.
+```
+Finally, delete the hotfix branch
+``` console
+$ git branch -d hotfix/2.1.4
+Deleted branch hotfix/2.1.4 (was acdf3a6).
+```
 ### Workflow Diagram
 ![Branch Model](https://github.com/oliverclark15/web2py/blob/master/Git-branching-model.png)
 
